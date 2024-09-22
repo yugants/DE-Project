@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "name": "Laptop",
+  "features": {
+    "RAM": "16GB",
+    "storage": "512GB SSD"
+  }
+ }

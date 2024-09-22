@@ -1,0 +1,23 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Laptop",
+        "features": {
+          "RAM": "16GB",
+          "storage": "512GB SSD"
+        },
+        "tags": ["electronics", "computers"]
+      },
+      {
+        "id": 2,
+        "name": "Smartphone",
+        "features": {
+          "RAM": "8GB",
+          "storage": "128GB"
+        },
+        "tags": ["electronics", "mobile"]
+      }
+    ]
+  }
+  
