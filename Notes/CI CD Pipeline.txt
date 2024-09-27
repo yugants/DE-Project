@@ -1,0 +1,18 @@
+A CI/CD Pipeline is a process used in software development that automates the steps of code integration, testing, and deployment. It stands for Continuous Integration and Continuous Delivery/Deployment, and it helps ensure that software is always in a release-ready state.
+
+Simple Definition:
+Think of a CI/CD pipeline like an automated assembly line in a factory. In the same way that products move through stages (like assembly, quality check, and packaging) automatically, a CI/CD pipeline moves code changes through stages of building, testing, and deploying to make sure everything works smoothly before releasing it to users.
+
+Breakdown of Terms:
+Continuous Integration (CI):
+
+This means that when developers make code changes (like fixing bugs or adding new features), these changes are automatically tested and integrated into the main codebase frequently (e.g., daily).
+Imagine a conveyor belt where every new part (code) is added, checked for defects (testing), and combined with other parts (main code) regularly.
+Continuous Delivery (CD):
+
+After the code is integrated and tested, it's ready to be deployed (released) to the production environment at any time. In Continuous Delivery, the deployment happens manually, but the code is always ready to go.
+Think of the final product on the conveyor belt being fully assembled and ready to be packaged or sold, but it waits for a person (developer) to decide when to release it to the customer.
+Continuous Deployment (CD):
+
+This is an advanced step where the code is automatically tested, and once it passes the tests, it is automatically deployed to the production environment without any manual intervention.
+This is like an assembly line where, as soon as the product passes the quality check, it gets sent directly to customers automatically without waiting for approval.

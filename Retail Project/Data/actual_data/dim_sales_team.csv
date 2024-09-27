@@ -1,0 +1,21 @@
+id,first_name,last_name,manager_id,is_manager,address,pincode,joining_date
+1,Omisha,Wadhwa,17.0,N,"593, Konda, Korba 897360",733358,2021-01-04
+2,Gayathri,Choudhary,9.0,N,"85/31, Raman Circle, Bhimavaram 176749",821832,2017-11-06
+3,Varenya,Naik,13.0,N,"913, Mall Road, Thoothukudi 295616",564833,2022-02-03
+4,Vritti,Golla,1.0,N,"60, Varghese Circle, Jaipur 509930",297838,2021-01-05
+5,Ekbal,Dutt,19.0,N,"83/37, Mody, Belgaum-992615",651738,2017-12-12
+6,Guneet,Keer,11.0,N,"79/02, Lall Ganj, Junagadh-836106",019492,2015-08-04
+7,Dayita,Dave,8.0,N,"H.No. 148, Sampath Chowk, Karaikudi-338755",175153,2019-05-25
+8,Bachittar,Shah,,Y,"H.No. 070, Khosla Zila, Katni-091611",426053,2023-06-04
+9,Jairaj,Zachariah,,Y,"H.No. 34, Oommen Marg, Bhavnagar 899790",304699,2021-09-04
+10,Anita,Gokhale,11.0,N,"00/70, Dash Path, Khandwa-727746",608274,2018-07-30
+11,Dalbir,Khatri,,Y,"H.No. 14, Banik Chowk, Thoothukudi 325185",480023,2017-06-24
+12,Mugdha,Kohli,6.0,N,"64/132, Andra Zila, Dehradun-069307",909474,2018-01-12
+13,Kabir,Nazareth,7.0,N,"76/61, Sur Circle, Ratlam 397055",644345,2022-02-03
+14,Arjun,Char,19.0,N,"59/90, Kuruvilla Zila, Suryapet 793514",193943,2016-12-22
+15,Darpan,Bhalla,11.0,N,"94, Goda Ganj, Tirupati-857504",499350,2022-08-06
+16,Oviya,Raja,15.0,N,"H.No. 03, Date Road, Korba 556874",736881,2015-09-14
+17,Netra,Oommen,20.0,N,"H.No. 57, Shah Nagar, Ghaziabad-741319",872645,2018-03-27
+18,Anvi,Verma,8.0,N,"84/59, Rajan Zila, Pali-264767",660742,2023-05-03
+19,Nitara,Kuruvilla,8.0,N,"96, Padmanabhan Zila, Satna 121425",729506,2021-07-09
+20,Lakshmi,Kaul,12.0,N,"32, Pandey Nagar, Suryapet 893738",156544,2015-08-09

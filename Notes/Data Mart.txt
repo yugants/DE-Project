@@ -1,0 +1,4 @@
+A Data Mart is a smaller, more focused subset of a Data Warehouse that is designed to serve the needs of a specific business area or department. It contains curated data that is relevant to a particular function, making it easier for that team to access and analyze the information they need.
+
+Simple Definition:
+A data mart is like a smaller, specialized shop in a mall. Instead of holding all kinds of products (like a data warehouse does), it only holds items relevant to a specific section (like sports gear, electronics, or groceries). Each shop (data mart) caters to a different need.
