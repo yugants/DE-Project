@@ -5,7 +5,7 @@ from faker import Faker
 
 fake = Faker('en_IN')
 
-def make_data_dirty(df, missing_percentage=0.1, swap_percentage=0.1, corrupt_percentage=0.1):
+def make_data_dirty(df, missing_percentage=0.07, swap_percentage=0.07, corrupt_percentage=0.07):
     """
     This function introduces dirty data into a DataFrame by:
     1. Introducing missing values in random columns.
@@ -51,11 +51,11 @@ def make_data_dirty(df, missing_percentage=0.1, swap_percentage=0.1, corrupt_per
     return df
 
 # Load CSV files from the './actual_data/' location
-customer_df = pd.read_csv('./actual_data/dim_customer.csv')
-store_df = pd.read_csv('./actual_data/dim_store.csv')
-product_df = pd.read_csv('./actual_data/dim_product.csv')
-sales_team_df = pd.read_csv('./actual_data/dim_sales_team.csv')
-fact_sales_df = pd.read_csv('./actual_data/fact_sales.csv')
+customer_df = pd.read_csv('./actual_data/generated_csv/dim_customer.csv')
+store_df = pd.read_csv('./actual_data/generated_csv/dim_store.csv')
+product_df = pd.read_csv('./actual_data/generated_csv/dim_product.csv')
+sales_team_df = pd.read_csv('./actual_data/generated_csv/dim_sales_team.csv')
+fact_sales_df = pd.read_csv('./actual_data/generated_csv/fact_sales.csv')
 
 # Make each table dirty
 customer_dirty = make_data_dirty(customer_df)
@@ -65,10 +65,10 @@ sales_team_dirty = make_data_dirty(sales_team_df)
 fact_sales_dirty = make_data_dirty(fact_sales_df)
 
 # Save the dirty tables back to the './actual_data/' folder with new filenames
-customer_dirty.to_csv('./actual_data/dim_customer_dirty.csv', index=False)
-store_dirty.to_csv('./actual_data/dim_store_dirty.csv', index=False)
-product_dirty.to_csv('./actual_data/dim_product_dirty.csv', index=False)
-sales_team_dirty.to_csv('./actual_data/dim_sales_team_dirty.csv', index=False)
-fact_sales_dirty.to_csv('./actual_data/fact_sales_dirty.csv', index=False)
+customer_dirty.to_csv('./actual_data/dirty/dim_customer_dirty.csv', index=False)
+store_dirty.to_csv('./actual_data/dirty/dim_store_dirty.csv', index=False)
+product_dirty.to_csv('./actual_data/dirty/dim_product_dirty.csv', index=False)
+sales_team_dirty.to_csv('./actual_data/dirty/dim_sales_team_dirty.csv', index=False)
+fact_sales_dirty.to_csv('./actual_data/dirty/fact_sales_dirty.csv', index=False)
 
-print("Dirty CSV files created successfully in './actual_data/'.")
+print("Dirty CSV files created successfully in './actual_data/dirty'.")

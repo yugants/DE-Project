@@ -34,6 +34,6 @@ for i in range(1, num_rows + 1):
 df = pd.DataFrame(data, columns=['id', 'first_name', 'last_name', 'manager_id', 'is_manager', 'address', 'pincode', 'joining_date'])
 
 # Save the DataFrame to a CSV file
-df.to_csv('./actual_data/dim_sales_team.csv', index=False)
+df.to_csv('./actual_data/generated_csv/dim_sales_team.csv', index=False)
 
 print("CSV file 'sales_team.csv' created successfully.")

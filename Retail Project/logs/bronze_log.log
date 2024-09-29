@@ -1,0 +1,1072 @@
+2024-09-28 17:12:36,464 - DEBUG -GatewayClient.address is deprecated and will be removed in version 1.0. Use GatewayParameters instead.
+2024-09-28 17:12:36,466 - DEBUG -Command to send: A
+01a51d7dce284c271c94cf0875ee12bf0b58aba5ab20247b872b657b60d6525c
+
+2024-09-28 17:12:36,492 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,492 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.SparkConf
+e
+
+2024-09-28 17:12:36,494 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,494 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.api.java.*
+e
+
+2024-09-28 17:12:36,494 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,494 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.api.python.*
+e
+
+2024-09-28 17:12:36,494 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,494 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.ml.python.*
+e
+
+2024-09-28 17:12:36,495 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,495 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.mllib.api.python.*
+e
+
+2024-09-28 17:12:36,495 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,495 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.resource.*
+e
+
+2024-09-28 17:12:36,495 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,495 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.sql.*
+e
+
+2024-09-28 17:12:36,495 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,495 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.sql.api.python.*
+e
+
+2024-09-28 17:12:36,496 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,496 - DEBUG -Command to send: j
+i
+rj
+org.apache.spark.sql.hive.*
+e
+
+2024-09-28 17:12:36,496 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,496 - DEBUG -Command to send: j
+i
+rj
+scala.Tuple2
+e
+
+2024-09-28 17:12:36,496 - DEBUG -Answer received: !yv
+2024-09-28 17:12:36,496 - DEBUG -Command to send: r
+u
+SparkConf
+rj
+e
+
+2024-09-28 17:12:36,498 - DEBUG -Answer received: !ycorg.apache.spark.SparkConf
+2024-09-28 17:12:36,499 - DEBUG -Command to send: i
+org.apache.spark.SparkConf
+bTrue
+e
+
+2024-09-28 17:12:36,505 - DEBUG -Answer received: !yro0
+2024-09-28 17:12:36,506 - DEBUG -Command to send: c
+o0
+set
+sspark.app.name
+sbronze_layer
+e
+
+2024-09-28 17:12:36,509 - DEBUG -Answer received: !yro1
+2024-09-28 17:12:36,510 - DEBUG -Command to send: c
+o0
+contains
+sspark.serializer.objectStreamReset
+e
+
+2024-09-28 17:12:36,510 - DEBUG -Answer received: !ybfalse
+2024-09-28 17:12:36,510 - DEBUG -Command to send: c
+o0
+set
+sspark.serializer.objectStreamReset
+s100
+e
+
+2024-09-28 17:12:36,511 - DEBUG -Answer received: !yro2
+2024-09-28 17:12:36,511 - DEBUG -Command to send: c
+o0
+contains
+sspark.rdd.compress
+e
+
+2024-09-28 17:12:36,511 - DEBUG -Answer received: !ybfalse
+2024-09-28 17:12:36,511 - DEBUG -Command to send: c
+o0
+set
+sspark.rdd.compress
+sTrue
+e
+
+2024-09-28 17:12:36,511 - DEBUG -Answer received: !yro3
+2024-09-28 17:12:36,511 - DEBUG -Command to send: c
+o0
+contains
+sspark.master
+e
+
+2024-09-28 17:12:36,512 - DEBUG -Answer received: !ybtrue
+2024-09-28 17:12:36,512 - DEBUG -Command to send: c
+o0
+contains
+sspark.app.name
+e
+
+2024-09-28 17:12:36,512 - DEBUG -Answer received: !ybtrue
+2024-09-28 17:12:36,512 - DEBUG -Command to send: c
+o0
+contains
+sspark.master
+e
+
+2024-09-28 17:12:36,512 - DEBUG -Answer received: !ybtrue
+2024-09-28 17:12:36,512 - DEBUG -Command to send: c
+o0
+get
+sspark.master
+e
+
+2024-09-28 17:12:36,513 - DEBUG -Answer received: !yslocal[*]
+2024-09-28 17:12:36,513 - DEBUG -Command to send: c
+o0
+contains
+sspark.app.name
+e
+
+2024-09-28 17:12:36,514 - DEBUG -Answer received: !ybtrue
+2024-09-28 17:12:36,514 - DEBUG -Command to send: c
+o0
+get
+sspark.app.name
+e
+
+2024-09-28 17:12:36,514 - DEBUG -Answer received: !ysbronze_layer
+2024-09-28 17:12:36,514 - DEBUG -Command to send: c
+o0
+contains
+sspark.home
+e
+
+2024-09-28 17:12:36,514 - DEBUG -Answer received: !ybfalse
+2024-09-28 17:12:36,514 - DEBUG -Command to send: c
+o0
+getAll
+e
+
+2024-09-28 17:12:36,515 - DEBUG -Answer received: !yto4
+2024-09-28 17:12:36,515 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,515 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,515 - DEBUG -Command to send: a
+g
+o4
+i0
+e
+
+2024-09-28 17:12:36,516 - DEBUG -Answer received: !yro5
+2024-09-28 17:12:36,516 - DEBUG -Command to send: c
+o5
+_1
+e
+
+2024-09-28 17:12:36,516 - DEBUG -Answer received: !ysspark.app.name
+2024-09-28 17:12:36,516 - DEBUG -Command to send: c
+o5
+_2
+e
+
+2024-09-28 17:12:36,517 - DEBUG -Answer received: !ysbronze_layer
+2024-09-28 17:12:36,517 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,517 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,518 - DEBUG -Command to send: a
+g
+o4
+i1
+e
+
+2024-09-28 17:12:36,518 - DEBUG -Answer received: !yro6
+2024-09-28 17:12:36,518 - DEBUG -Command to send: c
+o6
+_1
+e
+
+2024-09-28 17:12:36,518 - DEBUG -Answer received: !ysspark.rdd.compress
+2024-09-28 17:12:36,518 - DEBUG -Command to send: c
+o6
+_2
+e
+
+2024-09-28 17:12:36,518 - DEBUG -Answer received: !ysTrue
+2024-09-28 17:12:36,518 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,518 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,518 - DEBUG -Command to send: a
+g
+o4
+i2
+e
+
+2024-09-28 17:12:36,518 - DEBUG -Answer received: !yro7
+2024-09-28 17:12:36,519 - DEBUG -Command to send: c
+o7
+_1
+e
+
+2024-09-28 17:12:36,519 - DEBUG -Answer received: !ysspark.serializer.objectStreamReset
+2024-09-28 17:12:36,519 - DEBUG -Command to send: c
+o7
+_2
+e
+
+2024-09-28 17:12:36,519 - DEBUG -Answer received: !ys100
+2024-09-28 17:12:36,519 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,519 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,519 - DEBUG -Command to send: a
+g
+o4
+i3
+e
+
+2024-09-28 17:12:36,519 - DEBUG -Answer received: !yro8
+2024-09-28 17:12:36,519 - DEBUG -Command to send: c
+o8
+_1
+e
+
+2024-09-28 17:12:36,519 - DEBUG -Answer received: !ysspark.master
+2024-09-28 17:12:36,520 - DEBUG -Command to send: c
+o8
+_2
+e
+
+2024-09-28 17:12:36,520 - DEBUG -Answer received: !yslocal[*]
+2024-09-28 17:12:36,520 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,520 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,520 - DEBUG -Command to send: a
+g
+o4
+i4
+e
+
+2024-09-28 17:12:36,520 - DEBUG -Answer received: !yro9
+2024-09-28 17:12:36,520 - DEBUG -Command to send: c
+o9
+_1
+e
+
+2024-09-28 17:12:36,520 - DEBUG -Answer received: !ysspark.submit.pyFiles
+2024-09-28 17:12:36,520 - DEBUG -Command to send: c
+o9
+_2
+e
+
+2024-09-28 17:12:36,520 - DEBUG -Answer received: !ys
+2024-09-28 17:12:36,521 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,521 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,521 - DEBUG -Command to send: a
+g
+o4
+i5
+e
+
+2024-09-28 17:12:36,521 - DEBUG -Answer received: !yro10
+2024-09-28 17:12:36,521 - DEBUG -Command to send: c
+o10
+_1
+e
+
+2024-09-28 17:12:36,521 - DEBUG -Answer received: !ysspark.submit.deployMode
+2024-09-28 17:12:36,521 - DEBUG -Command to send: c
+o10
+_2
+e
+
+2024-09-28 17:12:36,521 - DEBUG -Answer received: !ysclient
+2024-09-28 17:12:36,521 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,521 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,521 - DEBUG -Command to send: a
+g
+o4
+i6
+e
+
+2024-09-28 17:12:36,522 - DEBUG -Answer received: !yro11
+2024-09-28 17:12:36,522 - DEBUG -Command to send: c
+o11
+_1
+e
+
+2024-09-28 17:12:36,522 - DEBUG -Answer received: !ysspark.app.submitTime
+2024-09-28 17:12:36,522 - DEBUG -Command to send: c
+o11
+_2
+e
+
+2024-09-28 17:12:36,522 - DEBUG -Answer received: !ys1727523756340
+2024-09-28 17:12:36,522 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,522 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,522 - DEBUG -Command to send: a
+g
+o4
+i7
+e
+
+2024-09-28 17:12:36,522 - DEBUG -Answer received: !yro12
+2024-09-28 17:12:36,523 - DEBUG -Command to send: c
+o12
+_1
+e
+
+2024-09-28 17:12:36,523 - DEBUG -Answer received: !ysspark.ui.showConsoleProgress
+2024-09-28 17:12:36,523 - DEBUG -Command to send: c
+o12
+_2
+e
+
+2024-09-28 17:12:36,523 - DEBUG -Answer received: !ystrue
+2024-09-28 17:12:36,523 - DEBUG -Command to send: a
+e
+o4
+e
+
+2024-09-28 17:12:36,523 - DEBUG -Answer received: !yi8
+2024-09-28 17:12:36,523 - DEBUG -Command to send: r
+u
+JavaSparkContext
+rj
+e
+
+2024-09-28 17:12:36,535 - DEBUG -Answer received: !ycorg.apache.spark.api.java.JavaSparkContext
+2024-09-28 17:12:36,536 - DEBUG -Command to send: i
+org.apache.spark.api.java.JavaSparkContext
+ro0
+e
+
+2024-09-28 17:12:37,476 - DEBUG -Command to send: A
+01a51d7dce284c271c94cf0875ee12bf0b58aba5ab20247b872b657b60d6525c
+
+2024-09-28 17:12:37,478 - DEBUG -Answer received: !yv
+2024-09-28 17:12:37,479 - DEBUG -Command to send: m
+d
+o1
+e
+
+2024-09-28 17:12:37,479 - DEBUG -Answer received: !yv
+2024-09-28 17:12:37,479 - DEBUG -Command to send: m
+d
+o2
+e
+
+2024-09-28 17:12:37,480 - DEBUG -Answer received: !yv
+2024-09-28 17:12:37,480 - DEBUG -Command to send: m
+d
+o3
+e
+
+2024-09-28 17:12:37,480 - DEBUG -Answer received: !yv
+2024-09-28 17:12:37,480 - DEBUG -Command to send: m
+d
+o4
+e
+
+2024-09-28 17:12:37,481 - DEBUG -Answer received: !yv
+2024-09-28 17:12:38,753 - DEBUG -Answer received: !yro13
+2024-09-28 17:12:38,753 - DEBUG -Command to send: c
+o13
+sc
+e
+
+2024-09-28 17:12:38,756 - DEBUG -Answer received: !yro14
+2024-09-28 17:12:38,756 - DEBUG -Command to send: c
+o14
+conf
+e
+
+2024-09-28 17:12:38,771 - DEBUG -Answer received: !yro15
+2024-09-28 17:12:38,779 - DEBUG -Command to send: r
+u
+PythonAccumulatorV2
+rj
+e
+
+2024-09-28 17:12:38,782 - DEBUG -Answer received: !ycorg.apache.spark.api.python.PythonAccumulatorV2
+2024-09-28 17:12:38,783 - DEBUG -Command to send: i
+org.apache.spark.api.python.PythonAccumulatorV2
+s127.0.0.1
+i65019
+s01a51d7dce284c271c94cf0875ee12bf0b58aba5ab20247b872b657b60d6525c
+e
+
+2024-09-28 17:12:38,784 - DEBUG -Answer received: !yro16
+2024-09-28 17:12:38,784 - DEBUG -Command to send: c
+o13
+sc
+e
+
+2024-09-28 17:12:38,784 - DEBUG -Answer received: !yro17
+2024-09-28 17:12:38,785 - DEBUG -Command to send: c
+o17
+register
+ro16
+e
+
+2024-09-28 17:12:38,788 - DEBUG -Answer received: !yv
+2024-09-28 17:12:38,788 - DEBUG -Command to send: r
+u
+PythonUtils
+rj
+e
+
+2024-09-28 17:12:38,790 - DEBUG -Answer received: !ycorg.apache.spark.api.python.PythonUtils
+2024-09-28 17:12:38,790 - DEBUG -Command to send: r
+m
+org.apache.spark.api.python.PythonUtils
+isEncryptionEnabled
+e
+
+2024-09-28 17:12:38,791 - DEBUG -Answer received: !ym
+2024-09-28 17:12:38,791 - DEBUG -Command to send: c
+z:org.apache.spark.api.python.PythonUtils
+isEncryptionEnabled
+ro13
+e
+
+2024-09-28 17:12:38,793 - DEBUG -Answer received: !ybfalse
+2024-09-28 17:12:38,793 - DEBUG -Command to send: r
+u
+PythonUtils
+rj
+e
+
+2024-09-28 17:12:38,794 - DEBUG -Answer received: !ycorg.apache.spark.api.python.PythonUtils
+2024-09-28 17:12:38,794 - DEBUG -Command to send: r
+m
+org.apache.spark.api.python.PythonUtils
+getPythonAuthSocketTimeout
+e
+
+2024-09-28 17:12:38,794 - DEBUG -Answer received: !ym
+2024-09-28 17:12:38,794 - DEBUG -Command to send: c
+z:org.apache.spark.api.python.PythonUtils
+getPythonAuthSocketTimeout
+ro13
+e
+
+2024-09-28 17:12:38,795 - DEBUG -Answer received: !yL15
+2024-09-28 17:12:38,795 - DEBUG -Command to send: r
+u
+PythonUtils
+rj
+e
+
+2024-09-28 17:12:38,796 - DEBUG -Answer received: !ycorg.apache.spark.api.python.PythonUtils
+2024-09-28 17:12:38,796 - DEBUG -Command to send: r
+m
+org.apache.spark.api.python.PythonUtils
+getSparkBufferSize
+e
+
+2024-09-28 17:12:38,796 - DEBUG -Answer received: !ym
+2024-09-28 17:12:38,796 - DEBUG -Command to send: c
+z:org.apache.spark.api.python.PythonUtils
+getSparkBufferSize
+ro13
+e
+
+2024-09-28 17:12:38,797 - DEBUG -Answer received: !yi65536
+2024-09-28 17:12:38,797 - DEBUG -Command to send: r
+u
+org
+rj
+e
+
+2024-09-28 17:12:38,799 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,800 - DEBUG -Command to send: r
+u
+org.apache
+rj
+e
+
+2024-09-28 17:12:38,801 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,801 - DEBUG -Command to send: r
+u
+org.apache.spark
+rj
+e
+
+2024-09-28 17:12:38,802 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,802 - DEBUG -Command to send: r
+u
+org.apache.spark.SparkFiles
+rj
+e
+
+2024-09-28 17:12:38,803 - DEBUG -Answer received: !ycorg.apache.spark.SparkFiles
+2024-09-28 17:12:38,803 - DEBUG -Command to send: r
+m
+org.apache.spark.SparkFiles
+getRootDirectory
+e
+
+2024-09-28 17:12:38,804 - DEBUG -Answer received: !ym
+2024-09-28 17:12:38,804 - DEBUG -Command to send: c
+z:org.apache.spark.SparkFiles
+getRootDirectory
+e
+
+2024-09-28 17:12:38,805 - DEBUG -Answer received: !ysC:\\Users\\yugant.shekhar\\AppData\\Local\\Temp\\spark-924901e4-9906-406e-ac37-e73c7c6b10dc\\userFiles-88608ead-ba97-4af3-8dca-c211e6e3a074
+2024-09-28 17:12:38,806 - DEBUG -Command to send: c
+o15
+get
+sspark.submit.pyFiles
+s
+e
+
+2024-09-28 17:12:38,806 - DEBUG -Answer received: !ys
+2024-09-28 17:12:38,806 - DEBUG -Command to send: r
+u
+org
+rj
+e
+
+2024-09-28 17:12:38,809 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,810 - DEBUG -Command to send: r
+u
+org.apache
+rj
+e
+
+2024-09-28 17:12:38,822 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,822 - DEBUG -Command to send: r
+u
+org.apache.spark
+rj
+e
+
+2024-09-28 17:12:38,822 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,823 - DEBUG -Command to send: r
+u
+org.apache.spark.util
+rj
+e
+
+2024-09-28 17:12:38,823 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,823 - DEBUG -Command to send: r
+u
+org.apache.spark.util.Utils
+rj
+e
+
+2024-09-28 17:12:38,825 - DEBUG -Answer received: !ycorg.apache.spark.util.Utils
+2024-09-28 17:12:38,825 - DEBUG -Command to send: r
+m
+org.apache.spark.util.Utils
+getLocalDir
+e
+
+2024-09-28 17:12:38,828 - DEBUG -Answer received: !ym
+2024-09-28 17:12:38,829 - DEBUG -Command to send: c
+o13
+sc
+e
+
+2024-09-28 17:12:38,829 - DEBUG -Answer received: !yro18
+2024-09-28 17:12:38,829 - DEBUG -Command to send: c
+o18
+conf
+e
+
+2024-09-28 17:12:38,829 - DEBUG -Answer received: !yro19
+2024-09-28 17:12:38,829 - DEBUG -Command to send: c
+z:org.apache.spark.util.Utils
+getLocalDir
+ro19
+e
+
+2024-09-28 17:12:38,830 - DEBUG -Answer received: !ysC:\\Users\\yugant.shekhar\\AppData\\Local\\Temp\\spark-924901e4-9906-406e-ac37-e73c7c6b10dc
+2024-09-28 17:12:38,830 - DEBUG -Command to send: r
+u
+org
+rj
+e
+
+2024-09-28 17:12:38,832 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,832 - DEBUG -Command to send: r
+u
+org.apache
+rj
+e
+
+2024-09-28 17:12:38,832 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,832 - DEBUG -Command to send: r
+u
+org.apache.spark
+rj
+e
+
+2024-09-28 17:12:38,834 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,834 - DEBUG -Command to send: r
+u
+org.apache.spark.util
+rj
+e
+
+2024-09-28 17:12:38,834 - DEBUG -Answer received: !yp
+2024-09-28 17:12:38,834 - DEBUG -Command to send: r
+u
+org.apache.spark.util.Utils
+rj
+e
+
+2024-09-28 17:12:38,834 - DEBUG -Answer received: !ycorg.apache.spark.util.Utils
+2024-09-28 17:12:38,834 - DEBUG -Command to send: r
+m
+org.apache.spark.util.Utils
+createTempDir
+e
+
+2024-09-28 17:12:38,835 - DEBUG -Answer received: !ym
+2024-09-28 17:12:38,835 - DEBUG -Command to send: c
+z:org.apache.spark.util.Utils
+createTempDir
+sC:\\Users\\yugant.shekhar\\AppData\\Local\\Temp\\spark-924901e4-9906-406e-ac37-e73c7c6b10dc
+spyspark
+e
+
+2024-09-28 17:12:38,837 - DEBUG -Answer received: !yro20
+2024-09-28 17:12:38,837 - DEBUG -Command to send: c
+o20
+getAbsolutePath
+e
+
+2024-09-28 17:12:38,838 - DEBUG -Answer received: !ysC:\\Users\\yugant.shekhar\\AppData\\Local\\Temp\\spark-924901e4-9906-406e-ac37-e73c7c6b10dc\\pyspark-7903b592-d48f-46cb-ae5b-8b455f6d86e3
+2024-09-28 17:12:38,839 - DEBUG -Command to send: c
+o15
+get
+sspark.python.profile
+sfalse
+e
+
+2024-09-28 17:12:38,839 - DEBUG -Answer received: !ysfalse
+2024-09-28 17:12:38,839 - DEBUG -Command to send: c
+o15
+get
+sspark.python.profile.memory
+sfalse
+e
+
+2024-09-28 17:12:38,839 - DEBUG -Answer received: !ysfalse
+2024-09-28 17:12:38,840 - DEBUG -Command to send: r
+u
+SparkSession
+rj
+e
+
+2024-09-28 17:12:38,876 - DEBUG -Answer received: !ycorg.apache.spark.sql.SparkSession
+2024-09-28 17:12:38,876 - DEBUG -Command to send: r
+m
+org.apache.spark.sql.SparkSession
+getDefaultSession
+e
+
+2024-09-28 17:12:38,916 - DEBUG -Answer received: !ym
+2024-09-28 17:12:38,916 - DEBUG -Command to send: c
+z:org.apache.spark.sql.SparkSession
+getDefaultSession
+e
+
+2024-09-28 17:12:38,919 - DEBUG -Answer received: !yro21
+2024-09-28 17:12:38,919 - DEBUG -Command to send: c
+o21
+isDefined
+e
+
+2024-09-28 17:12:38,919 - DEBUG -Answer received: !ybfalse
+2024-09-28 17:12:38,920 - DEBUG -Command to send: r
+u
+SparkSession
+rj
+e
+
+2024-09-28 17:12:38,921 - DEBUG -Answer received: !ycorg.apache.spark.sql.SparkSession
+2024-09-28 17:12:38,922 - DEBUG -Command to send: c
+o13
+sc
+e
+
+2024-09-28 17:12:38,922 - DEBUG -Answer received: !yro22
+2024-09-28 17:12:38,922 - DEBUG -Command to send: i
+java.util.HashMap
+e
+
+2024-09-28 17:12:38,923 - DEBUG -Answer received: !yao23
+2024-09-28 17:12:38,923 - DEBUG -Command to send: c
+o23
+put
+sspark.app.name
+sbronze_layer
+e
+
+2024-09-28 17:12:38,923 - DEBUG -Answer received: !yn
+2024-09-28 17:12:38,924 - DEBUG -Command to send: i
+org.apache.spark.sql.SparkSession
+ro22
+ro23
+e
+
+2024-09-28 17:12:39,005 - DEBUG -Answer received: !yro24
+2024-09-28 17:12:39,005 - DEBUG -Command to send: r
+u
+SparkSession
+rj
+e
+
+2024-09-28 17:12:39,007 - DEBUG -Answer received: !ycorg.apache.spark.sql.SparkSession
+2024-09-28 17:12:39,007 - DEBUG -Command to send: r
+m
+org.apache.spark.sql.SparkSession
+setDefaultSession
+e
+
+2024-09-28 17:12:39,007 - DEBUG -Answer received: !ym
+2024-09-28 17:12:39,007 - DEBUG -Command to send: c
+z:org.apache.spark.sql.SparkSession
+setDefaultSession
+ro24
+e
+
+2024-09-28 17:12:39,007 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,007 - DEBUG -Command to send: r
+u
+SparkSession
+rj
+e
+
+2024-09-28 17:12:39,009 - DEBUG -Answer received: !ycorg.apache.spark.sql.SparkSession
+2024-09-28 17:12:39,009 - DEBUG -Command to send: r
+m
+org.apache.spark.sql.SparkSession
+setActiveSession
+e
+
+2024-09-28 17:12:39,009 - DEBUG -Answer received: !ym
+2024-09-28 17:12:39,009 - DEBUG -Command to send: c
+z:org.apache.spark.sql.SparkSession
+setActiveSession
+ro24
+e
+
+2024-09-28 17:12:39,009 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,009 - INFO -Spark session created!
+2024-09-28 17:12:39,009 - INFO -Data Cleaning started!
+2024-09-28 17:12:39,009 - DEBUG -Command to send: c
+o24
+read
+e
+
+2024-09-28 17:12:39,502 - DEBUG -Command to send: m
+d
+o0
+e
+
+2024-09-28 17:12:39,503 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,503 - DEBUG -Command to send: m
+d
+o5
+e
+
+2024-09-28 17:12:39,504 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,504 - DEBUG -Command to send: m
+d
+o6
+e
+
+2024-09-28 17:12:39,504 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,504 - DEBUG -Command to send: m
+d
+o7
+e
+
+2024-09-28 17:12:39,504 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,504 - DEBUG -Command to send: m
+d
+o8
+e
+
+2024-09-28 17:12:39,505 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,505 - DEBUG -Command to send: m
+d
+o9
+e
+
+2024-09-28 17:12:39,505 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,505 - DEBUG -Command to send: m
+d
+o10
+e
+
+2024-09-28 17:12:39,505 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,506 - DEBUG -Command to send: m
+d
+o11
+e
+
+2024-09-28 17:12:39,506 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,506 - DEBUG -Command to send: m
+d
+o12
+e
+
+2024-09-28 17:12:39,506 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,506 - DEBUG -Command to send: m
+d
+o14
+e
+
+2024-09-28 17:12:39,506 - DEBUG -Answer received: !yv
+2024-09-28 17:12:39,507 - DEBUG -Command to send: m
+d
+o23
+e
+
+2024-09-28 17:12:39,507 - DEBUG -Answer received: !yv
+2024-09-28 17:12:40,516 - DEBUG -Answer received: !yro25
+2024-09-28 17:12:40,516 - DEBUG -Command to send: c
+o25
+format
+scsv
+e
+
+2024-09-28 17:12:40,527 - DEBUG -Answer received: !yro26
+2024-09-28 17:12:40,527 - DEBUG -Command to send: c
+o26
+option
+sinferSchema
+strue
+e
+
+2024-09-28 17:12:40,528 - DEBUG -Answer received: !yro27
+2024-09-28 17:12:40,529 - DEBUG -Command to send: c
+o27
+option
+sheader
+strue
+e
+
+2024-09-28 17:12:40,529 - DEBUG -Answer received: !yro28
+2024-09-28 17:12:40,529 - DEBUG -Command to send: c
+o28
+load
+sC:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\dirty\\dim_customer_dirty.csv
+e
+
+2024-09-28 17:12:45,802 - DEBUG -Answer received: !yro29
+2024-09-28 17:12:45,802 - DEBUG -Command to send: c
+o24
+read
+e
+
+2024-09-28 17:12:45,802 - DEBUG -Answer received: !yro30
+2024-09-28 17:12:45,802 - DEBUG -Command to send: c
+o30
+format
+scsv
+e
+
+2024-09-28 17:12:45,803 - DEBUG -Answer received: !yro31
+2024-09-28 17:12:45,803 - DEBUG -Command to send: c
+o31
+option
+sinferSchema
+strue
+e
+
+2024-09-28 17:12:45,803 - DEBUG -Answer received: !yro32
+2024-09-28 17:12:45,803 - DEBUG -Command to send: c
+o32
+option
+sheader
+strue
+e
+
+2024-09-28 17:12:45,804 - DEBUG -Answer received: !yro33
+2024-09-28 17:12:45,804 - DEBUG -Command to send: c
+o33
+load
+sC:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\dirty\\dim_product_dirty.csv
+e
+
+2024-09-28 17:12:46,557 - DEBUG -Answer received: !yro34
+2024-09-28 17:12:46,557 - DEBUG -Command to send: c
+o24
+read
+e
+
+2024-09-28 17:12:46,558 - DEBUG -Answer received: !yro35
+2024-09-28 17:12:46,558 - DEBUG -Command to send: c
+o35
+format
+scsv
+e
+
+2024-09-28 17:12:46,559 - DEBUG -Answer received: !yro36
+2024-09-28 17:12:46,559 - DEBUG -Command to send: c
+o36
+option
+sinferSchema
+strue
+e
+
+2024-09-28 17:12:46,559 - DEBUG -Answer received: !yro37
+2024-09-28 17:12:46,560 - DEBUG -Command to send: c
+o37
+option
+sheader
+strue
+e
+
+2024-09-28 17:12:46,560 - DEBUG -Answer received: !yro38
+2024-09-28 17:12:46,560 - DEBUG -Command to send: c
+o38
+load
+sC:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\dirty\\dim_sales_team_dirty.csv
+e
+
+2024-09-28 17:12:47,025 - DEBUG -Answer received: !yro39
+2024-09-28 17:12:47,025 - DEBUG -Command to send: c
+o24
+read
+e
+
+2024-09-28 17:12:47,026 - DEBUG -Answer received: !yro40
+2024-09-28 17:12:47,026 - DEBUG -Command to send: c
+o40
+format
+scsv
+e
+
+2024-09-28 17:12:47,027 - DEBUG -Answer received: !yro41
+2024-09-28 17:12:47,027 - DEBUG -Command to send: c
+o41
+option
+sinferSchema
+strue
+e
+
+2024-09-28 17:12:47,027 - DEBUG -Answer received: !yro42
+2024-09-28 17:12:47,028 - DEBUG -Command to send: c
+o42
+option
+sheader
+strue
+e
+
+2024-09-28 17:12:47,028 - DEBUG -Answer received: !yro43
+2024-09-28 17:12:47,028 - DEBUG -Command to send: c
+o43
+load
+sC:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\dirty\\dim_store_dirty.csv
+e
+
+2024-09-28 17:12:47,413 - DEBUG -Answer received: !yro44
+2024-09-28 17:12:47,413 - DEBUG -Command to send: c
+o24
+read
+e
+
+2024-09-28 17:12:47,414 - DEBUG -Answer received: !yro45
+2024-09-28 17:12:47,414 - DEBUG -Command to send: c
+o45
+format
+scsv
+e
+
+2024-09-28 17:12:47,414 - DEBUG -Answer received: !yro46
+2024-09-28 17:12:47,415 - DEBUG -Command to send: c
+o46
+option
+sinferSchema
+strue
+e
+
+2024-09-28 17:12:47,415 - DEBUG -Answer received: !yro47
+2024-09-28 17:12:47,415 - DEBUG -Command to send: c
+o47
+option
+sheader
+strue
+e
+
+2024-09-28 17:12:47,416 - DEBUG -Answer received: !yro48
+2024-09-28 17:12:47,416 - DEBUG -Command to send: c
+o48
+load
+sC:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\dirty\\fact_sales_dirty.csv
+e
+
+2024-09-28 17:12:47,804 - DEBUG -Answer received: !yro49
+2024-09-28 17:12:47,804 - INFO -Dirty CSV reading completed!
+2024-09-28 17:12:47,805 - DEBUG -Command to send: c
+o49
+showString
+i20
+i20
+bFalse
+e
+
+2024-09-28 17:12:48,135 - DEBUG -Answer received: !ys+--------------------+--------+-----------------+----------------+---------------+-------+--------+----------+--------------------+\n|         customer_id|store_id|     product_name|      sales_date|sales_person_id|  price|quantity|total_cost|   additional_column|\n+--------------------+--------+-----------------+----------------+---------------+-------+--------+----------+--------------------+\n|                 9.0|     8.0|            Juice|      2021-11-05|            9.0| 294.25|     6.0|      null|Wind somebody wai...|\n|Record day matter...|    null|             null|            null|           null|   null|    null|      null|                null|\n|                12.0|     7.0|             Salt|      2020-09-08|           15.0|2996.28|    18.0|    166.46|Tough project agr...|\n|                14.0|    10.0|           Butter|      2021-05-05|           10.0| 105.75|     6.0|     634.5|Whatever attack a...|\n|Election room wor...|    null|             null|            null|           null|   null|    null|      null|                null|\n|                10.0|     3.0|        Detergent|      2020-04-18|        commodi|  284.9|     3.0|     854.7|Inside environmen...|\n|                 7.0|     6.0|            Juice|      2022-01-01|           18.0| 158.66|     8.0|   1269.28|     Cause get ball.|\n|Total hour guess ...|    null|             null|            null|           null|   null|    null|      null|                null|\n|Question crime wh...|    null|             null|            null|           null|   null|    null|      null|                null|\n|Guy section apply...|    null|             null|            null|           null|   null|    null|      null|                null|\n|                11.0|    null|           Butter|      2022-03-28|        commodi|  44.38|  magnam|    177.52|Whatever few scie...|\n|Job bad benefit. ...|    null|             null|            null|           null|   null|    null|      null|                null|\n|                13.0|     4.0|      Soft Drinks|      2021-08-30|            1.0| 134.19|     4.0|      null|Radio and six ton...|\n|                 7.0|     1.0|              Tea|      2021-08-25|           12.0|  446.1|  magnam|    2230.5|Art some notice l...|\n|Minute tax friend...|    null|             null|            null|           null|   null|    null|      null|                null|\n|  57.314758573801306|     2.0|             Rice|      2023-08-17|            8.0|  18.04|    11.0|    198.44|   379.8877433018483|\n|                 4.0|     1.0|              Tea|      2022-01-29|            3.0|  313.1|    null|    2817.9|                null|\n|                16.0|     7.0|           Pulses|      2023-01-06|           18.0|  21.52|    14.0|    301.28|Writer way challe...|\n|                18.0|     4.0|         Biscuits|            null|            1.0|  442.2|    11.0|    4864.2|                null|\n|                null|     2.0|771.5413736706647|982.081193988648|           16.0|  303.7|     3.0|     911.1|   379.8877433018483|\n+--------------------+--------+-----------------+----------------+---------------+-------+--------+----------+--------------------+\nonly showing top 20 rows\n

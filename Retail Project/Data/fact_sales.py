@@ -47,6 +47,6 @@ df = pd.DataFrame(data, columns=[
 ])
 
 # Save the DataFrame to a CSV file
-df.to_csv('./actual_data/fact_sales.csv', index=False)
+df.to_csv('./actual_data/generated_csv/fact_sales.csv', index=False)
 
 print("CSV file 'fact_table.csv' created successfully.")

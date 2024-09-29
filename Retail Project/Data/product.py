@@ -38,6 +38,6 @@ for _ in range(num_rows):
 df = pd.DataFrame(data, columns=['id', 'name', 'current_price', 'old_price', 'created_date', 'updated_date', 'expiry_date'])
 
 # Save the DataFrame to a CSV file
-df.to_csv('./actual_data/dim_product.csv', index=False)
+df.to_csv('./actual_data/generated_csv/dim_product.csv', index=False)
 
 print("CSV file 'product.csv' created successfully.")

@@ -28,6 +28,6 @@ for _ in range(num_rows):
 df = pd.DataFrame(data, columns=['id', 'address', 'store_pincode', 'store_manager_name', 'store_opening_date', 'reviews'])
 
 # Save the DataFrame to a CSV file
-df.to_csv('./actual_data/dim_store.csv', index=False)
+df.to_csv('./actual_data/generated_csv/dim_store.csv', index=False)
 
 print("CSV file 'store.csv' created successfully.")
