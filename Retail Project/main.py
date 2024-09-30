@@ -10,6 +10,8 @@ def get_spark_session(logger):
     try:
 
         spark = SparkSession.builder.appName('bronze_layer').getOrCreate()
+        # spark.conf.set("spark.hadoop.io.native.lib.available", "false")
+        # spark.sparkContext.setLogLevel("DEBUG")
         logger.info('Spark session created!')
         return spark
     
