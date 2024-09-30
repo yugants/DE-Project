@@ -1,5 +1,6 @@
 from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType, DateType
+from Spark_SQL_Connection.sql_config import DatabaseOperator
 
 class Bronze:
 
@@ -11,7 +12,7 @@ class Bronze:
     def __init__(self, spark, logger):
 
         self.dirty_path = '''C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\dirty'''
-        self.clean_path = '''C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\cleaned'''
+        self.default_path = '''C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\generated_csv'''
         
         self.spark = spark
         self.logger = logger
@@ -20,6 +21,8 @@ class Bronze:
         self.read_dirty_csv()
 
         self.clean_csv()
+
+        self.write_to_mysql()
 
    
     def read_dirty_csv(self):
@@ -35,29 +38,29 @@ class Bronze:
                             .option('header', 'true')\
                             .load(self.dirty_path + '\\dim_customer_dirty.csv')
             
-            # self.dirty_product = self.spark.read.format('csv')\
-            #                 .option('inferSchema', 'true')\
-            #                 .option('header', 'true')\
-            #                 .load(self.dirty_path + '\\dim_product_dirty.csv')
+            self.dim_product = self.spark.read.format('csv')\
+                            .option('inferSchema', 'true')\
+                            .option('header', 'true')\
+                            .load(self.default_path + '\\dim_product.csv')
             
-            # self.dirty_sales_team = self.spark.read.format('csv')\
-            #                 .option('inferSchema', 'true')\
-            #                 .option('header', 'true')\
-            #                 .load(self.dirty_path + '\\dim_sales_team_dirty.csv')
+            self.dim_sales_team = self.spark.read.format('csv')\
+                            .option('inferSchema', 'true')\
+                            .option('header', 'true')\
+                            .load(self.default_path + '\\dim_sales_team.csv')
             
-            # self.dirty_store = self.spark.read.format('csv')\
-            #                 .option('inferSchema', 'true')\
-            #                 .option('header', 'true')\
-            #                 .load(self.dirty_path + '\\dim_store_dirty.csv')
+            self.dim_store = self.spark.read.format('csv')\
+                            .option('inferSchema', 'true')\
+                            .option('header', 'true')\
+                            .load(self.default_path + '\\dim_store.csv')
             
-            # self.dirty_fact_sales = self.spark.read.format('csv')\
-            #                 .option('inferSchema', 'true')\
-            #                 .option('header', 'true')\
-            #                 .load(self.dirty_path + '\\fact_sales_dirty.csv')
+            self.fact_sales = self.spark.read.format('csv')\
+                            .option('inferSchema', 'true')\
+                            .option('header', 'true')\
+                            .load(self.default_path + '\\fact_sales.csv')
             
             self.logger.info('Dirty CSV reading completed!')
-
-            print(self.dirty_customer.show())
+            self.logger.info('-----------------FACT SALES---------------')
+            self.logger.info(self.fact_sales.show())
 
         except Exception as e:
 
@@ -155,22 +158,28 @@ class Bronze:
                                 self.dirty_customer.customer_joining_date.cast(DateType()).alias('customer_joining_date')
                             )
 
-            print('***************************************')
-            print(self.cleaned_customer_df.show())
+            self.logger.info('***************************************')
+            self.logger.info(self.cleaned_customer_df.show())
             
-            # self.cleaned_customer_df.write.csv('./cleaned/dim_customers.csv', header=True, mode='overwrite')
-
-            # self.writing_data()
-
-          
-
         except Exception as e:
 
             self.logger.exception(e)
 
 
-    def writing_data(self):
+    def write_to_mysql(self):
 
-        pandas_df = self.cleaned_customer_df.toPandas()
+        do = DatabaseOperator(self.logger, 'bronzedb' )
 
-        pandas_df.to_csv('./dim_customer.csv',  index=False)
+        data_object = [
+            [self.cleaned_customer_df, 'dim_customer']
+            ,[self.dim_product, 'dim_product']
+            ,[self.dim_sales_team, 'dim_sales_team']
+            ,[self.dim_store, 'dim_store']
+            ,[self.fact_sales, 'fact_sales']
+            ]
+        
+        self.logger.info('---------Attempting to write DatFrame on MySQL-----------')
+
+        for i in data_object:
+
+            do.write_dataframe(i[0], i[1])

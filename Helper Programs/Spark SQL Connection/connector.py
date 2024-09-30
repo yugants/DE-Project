@@ -1,12 +1,12 @@
 import mysql.connector
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
 
 
 def get_spark_session():
 
-    spark = SparkSession.builder.master("local[*]") \
+    spark = SparkSession.builder\
         .appName("connector")\
+        .config("spark.driver.extraClassPath", "./mysql-connector-java-8.0.26.jar")\
         .getOrCreate()
     
     return spark
@@ -20,7 +20,8 @@ def get_mysql_connection():
     )
     return connection
 
-class DatabaseWriter:
+
+class DatabaseOperator:
     def __init__(self,url,properties):
         self.url = url
         self.properties = properties
@@ -32,8 +33,25 @@ class DatabaseWriter:
                           table=table_name,
                           mode="append",
                           properties=self.properties)
+            
             print(f"Data successfully written into {table_name} table ")
+
         except Exception as e:
+
+            return {f"Message: Error occured {e}"}
+        
+    def read_dataframe(self, spark, table_name):
+        try:
+            print("=============inside read_dataframe================")
+            df = spark.read.jdbc(url=self.url,
+                          table=table_name,
+                          properties=self.properties)
+            print(df)
+            print(f"Data successfully read from {table_name} table ")
+            return df
+        
+        except Exception as e:
+
             return {f"Message: Error occured {e}"}
         
 
@@ -48,31 +66,31 @@ properties = {
 }
 
 spark = get_spark_session()
+print('=====================Spark Session Created============================')
 
-schema = StructType([
-    StructField("id", IntegerType(), False),
-    StructField("name", StringType(), True),
-    StructField("age", IntegerType(), True),
-    StructField("city", StringType(), True),
-    StructField("salary", DoubleType(), True)
-])
 
-# Manually define data
-data = [
-    (1, "John Doe", 28, "New York", 50000.0),
-    (2, "Jane Smith", 34, "Los Angeles", 65000.0),
-    (3, "Mike Johnson", 45, "Chicago", 70000.0),
-    (4, "Emily Davis", 22, "Houston", 48000.0),
-    (5, "David Wilson", 38, "Philadelphia", 52000.0),
-    (6, "Sophia Brown", 30, "Phoenix", 55000.0),
-    (7, "James Miller", 42, "San Antonio", 60000.0),
-    (8, "Isabella Garcia", 27, "San Diego", 63000.0),
-    (9, "Ethan Martinez", 31, "Dallas", 47000.0),
-    (10, "Ava Anderson", 29, "San Jose", 58000.0)
-]
+# # Create DataFrame
+df = spark.read.format('csv')\
+        .option('header', 'true')\
+        .option('inferSchema', 'true')\
+        .load('./dim_product.csv')
 
-# Create DataFrame
-df = spark.createDataFrame(data, schema)
+print('======================Dataframe============================')
+# # Show the DataFrame
+print(df.show(truncate=False))
 
-# Show the DataFrame
-df.show(truncate=False)
+
+print('writing to the SQL')
+
+dw = DatabaseOperator(url, properties)
+dw.write_dataframe(df, 'dim_customer')
+
+# print('==================SUccessfully Written============================')
+
+# Read from MySQL
+
+# do = DatabaseOperator(url, properties)
+
+# nf = do.read_dataframe(spark, 'dim_customer')
+
+# print(nf)

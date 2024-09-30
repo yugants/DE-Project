@@ -9,9 +9,11 @@ def get_spark_session(logger):
 
     try:
 
-        spark = SparkSession.builder.appName('bronze_layer').getOrCreate()
-        # spark.conf.set("spark.hadoop.io.native.lib.available", "false")
-        # spark.sparkContext.setLogLevel("DEBUG")
+        spark = SparkSession.builder\
+            .appName('bronze_layer')\
+            .config("spark.driver.extraClassPath", "./mysql-connector-java-8.0.26.jar")\
+            .getOrCreate()
+        
         logger.info('Spark session created!')
         return spark
     
@@ -25,8 +27,7 @@ if __name__=='__main__':
     Setting the logger
     '''
 
-    logging.basicConfig(level=logging.DEBUG, filename='./logs/bronze_log.log', filemode='w',
-                    format="%(asctime)s - %(levelname)s -%(message)s")
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s -%(message)s")
     
     logger = logging.getLogger(__name__)
 
