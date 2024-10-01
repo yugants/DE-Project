@@ -1,6 +1,7 @@
 from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType, DateType
 from Spark_SQL_Connection.sql_config import DatabaseOperator
+from Data_Writer.writer import Writer
 
 class Bronze:
 
@@ -13,7 +14,8 @@ class Bronze:
 
         self.dirty_path = '''C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\dirty'''
         self.default_path = '''C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\generated_csv'''
-        
+        self.clean_path = '''C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\cleaned'''
+
         self.spark = spark
         self.logger = logger
         self.logger.info('Data Cleaning started!')
@@ -21,6 +23,8 @@ class Bronze:
         self.read_dirty_csv()
 
         self.clean_csv()
+
+        self.write_to_cleaned_dir()
 
         self.write_to_mysql()
 
@@ -166,6 +170,34 @@ class Bronze:
             self.logger.exception(e)
 
 
+    def write_to_cleaned_dir(self):
+
+        self.logger.info('------------Writing CSV to Clean directory--------------')
+        data_object = [
+            [self.cleaned_customer_df, 'dim_customer']
+            ,[self.dim_product, 'dim_product']
+            ,[self.dim_sales_team, 'dim_sales_team']
+            ,[self.dim_store, 'dim_store']
+            ,[self.fact_sales, 'fact_sales']
+            ]
+
+        wr = Writer(self.logger)
+
+        for i in data_object:
+
+            path = self.clean_path + '\\' + i[1]
+            wr.writer(df=i[0], format='csv', mode='overwrite', path = path)
+
+            # i[0].write.format('csv')\
+            #     .option('header', 'true')\
+            #     .mode('overwrite')\
+            #     .option('path', self.clean_path + '\\' + i[1])\
+            #     .save()
+            
+        self.logger.info('----------CSV Wrting Done---------------')
+            
+
+
     def write_to_mysql(self):
 
         do = DatabaseOperator(self.logger, 'bronzedb' )
@@ -183,3 +215,5 @@ class Bronze:
         for i in data_object:
 
             do.write_dataframe(i[0], i[1])
+
+        self.logger.info('---------Writing on MySQL completed-----------')

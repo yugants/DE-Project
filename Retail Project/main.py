@@ -32,3 +32,5 @@ if __name__=='__main__':
     logger = logging.getLogger(__name__)
 
     bronze_obj = Bronze(get_spark_session(logger), logger)
+
+    
