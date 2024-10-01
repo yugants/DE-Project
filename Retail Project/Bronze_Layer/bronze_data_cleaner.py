@@ -2,6 +2,7 @@ from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType, DateType
 from Spark_SQL_Connection.sql_config import DatabaseOperator
 from Data_Writer.writer import Writer
+from Data_Reader.reader import Reader
 
 class Bronze:
 
@@ -18,6 +19,8 @@ class Bronze:
 
         self.spark = spark
         self.logger = logger
+        self.read = Reader(self.spark, self.logger)
+
         self.logger.info('Data Cleaning started!')
 
         self.read_dirty_csv()
@@ -36,31 +39,16 @@ class Bronze:
         '''
         
         try:
+            
+            self.dirty_customer = self.read.reader('csv', self.dirty_path + '\\dim_customer_dirty.csv')
 
-            self.dirty_customer = self.spark.read.format('csv')\
-                            .option('inferSchema', 'true')\
-                            .option('header', 'true')\
-                            .load(self.dirty_path + '\\dim_customer_dirty.csv')
-            
-            self.dim_product = self.spark.read.format('csv')\
-                            .option('inferSchema', 'true')\
-                            .option('header', 'true')\
-                            .load(self.default_path + '\\dim_product.csv')
-            
-            self.dim_sales_team = self.spark.read.format('csv')\
-                            .option('inferSchema', 'true')\
-                            .option('header', 'true')\
-                            .load(self.default_path + '\\dim_sales_team.csv')
-            
-            self.dim_store = self.spark.read.format('csv')\
-                            .option('inferSchema', 'true')\
-                            .option('header', 'true')\
-                            .load(self.default_path + '\\dim_store.csv')
-            
-            self.fact_sales = self.spark.read.format('csv')\
-                            .option('inferSchema', 'true')\
-                            .option('header', 'true')\
-                            .load(self.default_path + '\\fact_sales.csv')
+            self.dim_product = self.read.reader('csv', self.default_path + '\\dim_product.csv')
+
+            self.dim_sales_team = self.read.reader('csv', self.default_path + '\\dim_sales_team.csv')
+
+            self.dim_store = self.read.reader('csv', self.default_path + '\\dim_store.csv')
+
+            self.fact_sales = self.read.reader('csv', self.default_path + '\\fact_sales.csv')
             
             self.logger.info('Dirty CSV reading completed!')
             self.logger.info('-----------------FACT SALES---------------')
@@ -187,12 +175,6 @@ class Bronze:
 
             path = self.clean_path + '\\' + i[1]
             wr.writer(df=i[0], format='csv', mode='overwrite', path = path)
-
-            # i[0].write.format('csv')\
-            #     .option('header', 'true')\
-            #     .mode('overwrite')\
-            #     .option('path', self.clean_path + '\\' + i[1])\
-            #     .save()
             
         self.logger.info('----------CSV Wrting Done---------------')
             

@@ -7,20 +7,19 @@ import random
 fake = Faker()
 
 # Define the number of rows you want to generate
-num_rows = 50
+num_rows = 100
 
-# Define sample data based on the dimension tables we've created
-# Assuming we already have 20 customers, 10 stores, 20 products, and 20 salespersons
-customer_ids = list(range(1, 21))  # Customer IDs from 1 to 20
-store_ids = list(range(1, 11))  # Store IDs from 1 to 10
-product_names = [
-    "Rice", "Wheat Flour", "Pulses", "Sugar", "Milk", 
-    "Butter", "Bread", "Eggs", "Vegetable Oil", 
-    "Salt", "Toothpaste", "Shampoo", "Soap", "Detergent",
-    "Biscuits", "Soft Drinks", "Juice", "Frozen Vegetables", 
-    "Tea", "Coffee"
-]
-sales_person_ids = list(range(1, 21))  # Salesperson IDs from 1 to 20
+
+customer_df = pd.read_csv('./actual_data/generated_csv/dim_customer.csv')
+product_df = pd.read_csv('./actual_data/generated_csv/dim_product.csv')
+sales_team_df = pd.read_csv('./actual_data/generated_csv/dim_sales_team.csv')
+store_df = pd.read_csv('./actual_data/generated_csv/dim_store.csv')
+
+
+customer_ids = customer_df['customer_id'].to_list()
+store_ids = store_df['id'].to_list()
+product_names = product_df['name'].to_list()
+sales_person_ids = sales_team_df['id'].to_list()
 
 # Initialize an empty list to store the rows
 data = []
@@ -32,10 +31,11 @@ for _ in range(num_rows):
     product_name = random.choice(product_names)
     sales_date = fake.date_between_dates(date_start=datetime(2020, 1, 1), date_end=datetime(2023, 8, 20))
     sales_person_id = random.choice(sales_person_ids)
-    price = round(random.uniform(10, 500), 2)  # Random price between 10 and 500
+    price = int(product_df[product_df['name'] == product_name]['current_price'].iloc[0])
+    print(f'{product_name} = {price}')
     quantity = random.randint(1, 20)  # Random quantity between 1 and 20
     total_cost = round(price * quantity, 2)  # Total cost = price * quantity
-    additional_column = fake.text(max_nb_chars=200)  # Additional information, up to 1000 chars
+    additional_column = fake.text(max_nb_chars=20)  # Additional information, up to 1000 chars
 
     # Append row data to the list
     data.append([customer_id, store_id, product_name, sales_date, sales_person_id, price, quantity, total_cost, additional_column])

@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from Bronze_Layer.bronze_data_cleaner import Bronze
+from Silver_Layer.dataframe_combiner import Combiner
 import logging
 
 
@@ -31,6 +32,10 @@ if __name__=='__main__':
     
     logger = logging.getLogger(__name__)
 
-    bronze_obj = Bronze(get_spark_session(logger), logger)
+    spark = get_spark_session(logger)
 
-    
+    bronze_obj = Bronze(spark, logger)
+
+    comb_obj = Combiner(spark, logger)
+
+    spark.stop()
