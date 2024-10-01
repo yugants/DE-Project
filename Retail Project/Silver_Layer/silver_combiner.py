@@ -1,8 +1,9 @@
 from Data_Reader.reader import Reader
 from pyspark.sql import functions as F
+from Data_Writer.writer import Writer
 
 
-class Combiner:
+class Silver:
 
     '''
     This class is for making 
@@ -24,10 +25,14 @@ class Combiner:
         self.logger = logger
 
         self.read = Reader(self.spark, self.logger)
+
+        self.write = Writer(self.logger)
         
         self.data_reader()
 
         self.combine()
+
+        self.create_data_mart()
 
 
     def data_reader(self):
@@ -68,35 +73,81 @@ class Combiner:
                 self.dim_customer
                 , self.fact_sales['customer_id'] == self.dim_customer['customer_id']
                 , 'inner'
-                )
+                ).drop(self.dim_customer['customer_id'])
         
         self.logger.info('------------Cusotmer + Fact_Sales---------------')
+        self.logger.info(self.cf.printSchema())
         self.logger.info(self.cf.show())
+        
 
         self.cp = self.cf.join(
                 self.dim_product
                 , self.cf['product_name'] == self.dim_product['name']
                 , 'inner'
-                )
+                ).drop(self.dim_product['id'], self.dim_product['name']
+                       , self.dim_product['current_price'], self.dim_product['old_price']
+                       , self.dim_product['created_date'], self.dim_product['updated_date'])
         
         self.logger.info('------------Cusotmer + Product + Fact_Sales---------------')
+        self.logger.info(self.cp.printSchema())
         self.logger.info(self.cp.show())
 
+
+        
+        'Renaming the address in the dim_store'
+
+        self.dim_store = self.dim_store\
+                .withColumnRenamed('address', 'store_address')
+        
+        self.logger.info('----------------------------------------')
+        self.logger.info(self.dim_store.printSchema())
+
         self.cs = self.cp.join(
-                self.dim_store
-                , self.cp['store_id'] == self.dim_store['id']
-                , 'inner'
-                )
+                self.dim_store.alias('ds'),
+                self.cp['store_id'] == F.col('ds.id'),
+                'inner'
+        ).drop(self.dim_store["id"], self.dim_store["store_pincode"], self.dim_store["store_opening_date"], self.dim_store["reviews"])
+
+                        
+
         
         self.logger.info('------------Cusotmer + Product + Fact_Sales + Store---------------')
+        self.logger.info(self.cs.printSchema())
         self.logger.info(self.cs.show())
 
+        # Rename columns in dim_sales_team to avoid conflicts
+        self.dim_sales_team_renamed = self.dim_sales_team \
+        .withColumnRenamed("address", "st_address") \
+        .withColumnRenamed("pincode", "st_pincode") \
+        .withColumnRenamed("first_name", "st_first_name") \
+        .withColumnRenamed("last_name", "st_last_name")
+
         self.cst = self.cs.join(
-                self.dim_sales_team
-                , self.cs['sales_person_id'] == self.dim_sales_team['id']
-                , 'inner'
-                )
-        
-        self.logger.info('------------Cusotmer + Product + Fact_Sales + Store + Sales_Team---------------')
+                self.dim_sales_team_renamed.alias("st"),
+                F.col("st.id") == self.cs["sales_person_id"],
+                "inner"
+        ).withColumn("sales_person_first_name", F.col("st_first_name")) \
+        .withColumn("sales_person_last_name", F.col("st_last_name")) \
+        .withColumn("sales_person_address", F.col("st_address")) \
+        .withColumn("sales_person_pincode", F.col("st_pincode")) \
+        .drop("st.id", "st_first_name", "st_last_name", "st_address", "st_pincode") 
+
+        self.logger.info('------------Customer + Product + Fact_Sales + Store + Sales_Team---------------')
         self.logger.info(self.cst.show())
 
+
+        self.logger.info(self.cst.printSchema())
+
+        self.write.writer(self.cst, 'csv', 'overwrite', 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\mart')
+
+
+
+
+    def create_data_mart(self):
+
+        
+        pass    
+
+
+
+    

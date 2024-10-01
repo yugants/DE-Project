@@ -8,6 +8,8 @@ class Writer:
     def writer(self, df, format, mode, path):
 
         try:
+            
+            self.logger.info('--------------Writing DatFrame---------------------')
 
             df.write.format(format)\
                     .option('header', 'true')\
@@ -15,7 +17,7 @@ class Writer:
                     .option('path', path)\
                     .save()
             
-            self.logger.info(f'Written {df} in {format}')
+            self.logger.info('--------------Writing Done!---------------------')
 
         except Exception as e:
 
