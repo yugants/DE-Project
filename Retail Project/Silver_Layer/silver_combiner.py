@@ -146,7 +146,47 @@ class Silver:
     def create_data_mart(self):
 
         
-        pass    
+        self.logger.info('-------------Creating Sales Data Mart--------------------')
+
+        final_sales_team_data_mart_df = self.cst.select("store_id",
+        "sales_person_id","sales_person_first_name","sales_person_last_name", "store_manager_name", "manager_id","is_manager",
+        "sales_person_address", "sales_person_pincode"
+        ,"sales_date", "total_cost",
+        F.expr("SUBSTRING(sales_date,1,7) as sales_month"))
+
+        self.logger.info('----------------Writing Sales Data Mart--------------------')
+
+        
+        final_sales_team_data_mart_df.write.format("parquet")\
+        .option("header", "true")\
+        .mode("overwrite")\
+        .partitionBy("sales_month","store_id")\
+        .option("path", 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\sales_team_data_mart')\
+        .save()
+
+        
+        self.logger.info('-------------Creating Customer Data Mart--------------------')
+
+        final_customer_data_mart_df = self.cst\
+        .select("customer_id",
+        "first_name", "last_name","address",
+        "pincode", "phone_number"
+        ,"sales_date", "total_cost")
+        
+        # final_customer_data_mart_df.write.format("parquet")\
+        # .option("header", "true")\
+        # .mode("overwrite")\
+        # .option("path", 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\customer_data_mart')\
+        # .save()
+
+        self.logger.info('-------------Writing Customer Data Mart--------------------')
+
+        self.write.writer(final_customer_data_mart_df
+                          , 'parquet'
+                          , 'overwrite'
+                          , 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\customer_data_mart'
+        )
+
 
 
 
