@@ -1,76 +1,130 @@
-import traceback
-import datetime
+import os
+# import io
+import boto3
+import pandas as pd
 
-class S3Reader:
+class S3:
 
 
-    def __init__(self, s3_client, bucket_name, logger):
+    def __init__(self, logger, bucket_name = 'de-retail-bucket'):
+
+        print('hello')
         
-        self.s3_client= s3_client
+        df = pd.read_csv('C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\AWS\\temp.csv')
+
+        aws_access_key = df['Access key ID'][0]
+        aws_secret_key = df['Secret access key'][0]
+        
+        self.s3 = boto3.resource(
+            service_name = 's3'
+            , region_name = 'eu-north-1'
+            , aws_access_key_id=aws_access_key
+            , aws_secret_access_key=aws_secret_key
+        )
         self.logger = logger
         self.bucket = bucket_name
 
+        print('Bucket: ', self.bucket)
 
-    def list_files(self, folder_path):
-        try:
-            response = self.s3_client.list_objects_v2(Bucket=self.bucket,Prefix=folder_path)
-            if 'Contents' in response:
-                self.logger.info("Total files available in folder '%s' of bucket '%s': %s", folder_path, self.bucket, response)
-                files = [f"s3://{self.bucket}/{obj['Key']}" for obj in response['Contents'] if
-                         not obj['Key'].endswith('/')]
-                return files
-            else:
-                return []
-        except Exception as e:
-            error_message = f"Error listing files: {e}"
-            traceback_message = traceback.format_exc()
-            self.logger.error("Got this error : %s",error_message)
-            print(traceback_message)
-            raise
+        print('Initialized logger')
+
+
     
-    def download_files(self, local_directory, list_files):
+    def get_real_file(self, local_file_path, format):
+
+        '''
+        Get parquet from
+        the folder structure 
+        '''
         
-        self.logger.info("Running download files for these files %s",list_files)
-        for key in list_files:
-            file_name = os.path.basename(key)
-            self.logger.info("File name %s ",file_name)
-            download_file_path = os.path.join(local_directory, file_name)
-            try:
-                self.s3_client.download_file(self.bucket,key,download_file_path)
-            except Exception as e:
-                error_message = f"Error downloading file '{key}': {str(e)}"
-                traceback_message = traceback.format_exc()
-                print(error_message)
-                print(traceback_message)
-                raise e
-            
-
-    def upload_to_s3(self,s3_directory,local_file_path):
-        current_epoch = int(datetime.datetime.now().timestamp()) * 1000
-        s3_prefix = f"{s3_directory}/{current_epoch}/"
         try:
-            for root, dirs, files in os.walk(local_file_path):
-                for file in files:
-                    local_file_path = os.path.join(root, file)
-                    s3_key = f"{s3_prefix}/{file}"
-                    self.s3_client.upload_file(local_file_path, self.bucket, s3_key)
-            return f"Data Successfully uploaded in {s3_directory} data mart "
+            
+            # List all files in the folder
+            file_names = os.listdir(local_file_path)
+
+            # Optionally, filter out only files (ignore directories)
+            file_names = [f for f in file_names if os.path.isfile(os.path.join(local_file_path, f))]
+
+            # print('Dirs: ',file_names)
+
+            for i in file_names:
+
+                # print(i.split('.')[-1])
+                if format == 'parquet' and 'parquet' == i.split('.')[-1]:
+                    original_file = i
+                    print('original file: ', original_file)
+                    return original_file
+                
+                elif format == 'csv' and 'csv' == i.split('.')[-1]:
+                    original_file = i
+                    print('original file: ', original_file)
+                    return original_file
+                
         except Exception as e:
-            self.logger.error(f"Error uploading file : {str(e)}")
-            traceback_message = traceback.format_exc()
-            print(traceback_message)
-            raise e
 
-################### Directory will also be available if you use this ###########
+            self.logger.exception(e)
 
-    # def list_files(self, bucket):
+
+    def upload_to_s3(self, s3_directory, local_file_path, format):
+
+        '''
+        For uploading files
+        to S3 bucket
+        '''
+            
+        # self.logger.info('Writing Parquet file to S3')
+        file = self.get_real_file(local_file_path, format)
+
+        # print('Returned Path: ', file)
+        # print('Returned Type: ', type(file))
+        # print('Local file Type: ', type(local_file_path))
+        local_file_path = local_file_path + file
+        # print('Final path: ', local_file_path)
+        
+        try:
+            (self.s3.Bucket(self.bucket)
+            .upload_file(Filename=local_file_path
+                        ,Key=s3_directory))
+            
+            self.logger.info(f'File written at {s3_directory} from {local_file_path}')
+
+        except Exception as e:
+
+            self.logger.exception(e)
+
+
+    # def list_files(self, folder_path):
+    #   pass
+    
+
+    # def read_file(self, spark, s3_location, format):
+
     #     try:
-    #         response = self.s3_client.list_objects_v2(Bucket=self.bucket)
-    #         if 'Contents' in response:
-    #             files = [f"s3://{self.bucket}/{obj['Key']}" for obj in response['Contents']]
-    #             return files
-    #         else:
-    #             return []
+    #         print('In read')
+    #         print('Bucket: ', self.bucket)
+    #         print('----------------------')
+            
+    #         obj = (self.s3.Bucket(self.bucket)
+    #                 .Object(s3_location).get())
+
+    #         buffer = io.BytesIO(obj['Body'].read())
+
+    #         if format == 'parquet':
+    #             df_pd = pd.read_parquet(buffer)
+    #             print('Pandas: ', df_pd)
+            
+    #         elif format == 'csv':
+    #             df_pd = pd.read_csv(buffer)
+
+
+    #         df = spark.createDataFrame(df_pd)
+
+
+    #         self.logger.info(f'Read from {s3_location}')
+    #         self.logger.info(df.show())
+    #         return df
+
     #     except Exception as e:
-    #         print(f"Error listing files: {e}")
-    #         return []
+
+    #         self.logger.exception(e)            
+        

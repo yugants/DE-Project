@@ -3,6 +3,7 @@ from pyspark.sql.types import IntegerType, DateType
 from Spark_SQL_Connection.sql_config import DatabaseOperator
 from Data_Writer.writer import Writer
 from Data_Reader.reader import Reader
+from S3_bucket.s3_read_write import S3
 
 class Bronze:
 
@@ -161,7 +162,7 @@ class Bronze:
     def write_to_cleaned_dir(self):
 
         self.logger.info('------------Writing CSV to Clean directory--------------')
-        data_object = [
+        self.data_object = [
             [self.cleaned_customer_df, 'dim_customer']
             ,[self.dim_product, 'dim_product']
             ,[self.dim_sales_team, 'dim_sales_team']
@@ -171,7 +172,7 @@ class Bronze:
 
         wr = Writer(self.logger)
 
-        for i in data_object:
+        for i in self.data_object:
 
             path = self.clean_path + '\\' + i[1]
             wr.writer(df=i[0], format='csv', mode='overwrite', path = path)
@@ -182,20 +183,48 @@ class Bronze:
 
     def write_to_mysql(self):
 
-        do = DatabaseOperator(self.logger, 'bronzedb' )
+        try:
 
-        data_object = [
-            [self.cleaned_customer_df, 'dim_customer']
-            ,[self.dim_product, 'dim_product']
-            ,[self.dim_sales_team, 'dim_sales_team']
-            ,[self.dim_store, 'dim_store']
-            ,[self.fact_sales, 'fact_sales']
-            ]
-        
-        self.logger.info('---------Attempting to write DatFrame on MySQL-----------')
+            do = DatabaseOperator(self.logger, 'bronzedb' )
 
-        for i in data_object:
+            s3 = S3(self.logger)
 
-            do.write_dataframe(i[0], i[1])
+            data_object = [
+                [self.cleaned_customer_df, 'dim_customer']
+                ,[self.dim_product, 'dim_product']
+                ,[self.dim_sales_team, 'dim_sales_team']
+                ,[self.dim_store, 'dim_store']
+                ,[self.fact_sales, 'fact_sales']
+                ]
+            
+            self.logger.info('---------Attempting to write DatFrame on MySQL-----------')
 
-        self.logger.info('---------Writing on MySQL completed-----------')
+            for i in data_object:
+
+                do.write_dataframe(i[0], i[1])
+
+            self.logger.info('---------Writing on MySQL completed-----------')
+
+            self.logger.info('---------Attempting to write CSV on AWS-----------')
+
+            for i in self.data_object:
+
+                path = self.clean_path + '\\' + i[1] + '\\'
+                s3_path = 'sales_data_processed/' + i[1] + '.csv'
+                # print('S3 path: ', s3_path)
+                # print('Local Path: ', path)
+
+                s3.upload_to_s3(s3_path, path, 'csv')
+
+            self.logger.info('---------AWS Writing Completed!-----------')
+
+        except Exception as e:
+
+            self.logger.exception(e)
+
+
+
+
+
+
+

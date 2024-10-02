@@ -2,6 +2,7 @@ from Data_Reader.reader import Reader
 from pyspark.sql import functions as F
 from Data_Writer.writer import Writer
 from Silver_Layer.silver_data_mart_test import SilverTest
+from S3_bucket.s3_read_write import S3
 
 
 class Silver:
@@ -165,7 +166,9 @@ class Silver:
         '''
 
         try:
-        
+                
+                s3 = S3(self.logger)
+
                 self.logger.info('-------------Creating Sales Data Mart--------------------')
 
                 final_sales_team_data_mart_df = self.cst.select("store_id",
@@ -177,12 +180,32 @@ class Silver:
                 self.logger.info('----------------Writing Sales Data Mart--------------------')
 
                 
-                final_sales_team_data_mart_df.write.format("parquet")\
-                .option("header", "true")\
-                .mode("overwrite")\
-                .partitionBy("sales_month","store_id")\
-                .option("path", 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\sales_team_data_mart')\
-                .save()
+                # final_sales_team_data_mart_df.write.format("parquet")\
+                # .option("header", "true")\
+                # .mode("overwrite")\
+                # .partitionBy("sales_month","store_id")\
+                # .option("path", 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\sales_team_data_mart')\
+                # .save()
+
+                self.write.writer(final_sales_team_data_mart_df
+                , 'parquet'
+                , 'overwrite'
+                , 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\sales_team_data_mart'
+                )
+
+
+                self.logger.info('---------Attempting to write Sales Data Mart on AWS-----------')
+
+               
+                path = 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\sales_team_data_mart\\'
+                s3_path = 'sales_data_mart/sales_data_mart.parquet'
+                print('S3 path: ', s3_path)
+                print('Local Path: ', path)
+
+                s3.upload_to_s3(s3_path, path, 'parquet')
+
+                self.logger.info('---------AWS Writing Completed!-----------')
+
 
                 
                 self.logger.info('-------------Creating Customer Data Mart--------------------')
@@ -206,6 +229,19 @@ class Silver:
                                 , 'overwrite'
                                 , 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\customer_data_mart'
                 )
+
+
+                self.logger.info('---------Attempting to write Customer Data Mart on AWS-----------')
+
+               
+                path = 'C:\\Users\\yugant.shekhar\\OneDrive - Blue Altair\\Desktop\\Douments\\Spark\\Retail Project\\Data\\actual_data\\customer_data_mart\\'
+                s3_path = 'customer_data_mart/customer_data_mart.parquet'
+                print('S3 path: ', s3_path)
+                print('Local Path: ', path)
+
+                s3.upload_to_s3(s3_path, path, 'parquet')
+
+                self.logger.info('---------AWS Writing Completed!-----------')
 
         except Exception as e:
              
