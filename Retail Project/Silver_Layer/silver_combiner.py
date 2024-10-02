@@ -158,6 +158,12 @@ class Silver:
 
     def create_data_mart(self):
 
+        '''
+        This will create the
+        cutomer and sales-team
+        data marts
+        '''
+
         try:
         
                 self.logger.info('-------------Creating Sales Data Mart--------------------')
@@ -207,6 +213,11 @@ class Silver:
 
 
     def schema_validation(self):
+
+        '''
+        This is for the Schema Validation
+        of the data marts
+        '''
          
         ob = SilverTest(self.spark, self.logger)
 

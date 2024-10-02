@@ -1,5 +1,11 @@
 class SilverTest:
 
+    '''
+    This class will test the schema
+    of both the marts and assert 
+    the results.
+    '''
+
     def __init__(self, spark, logger):
         
         self.spark = spark
